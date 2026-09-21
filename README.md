@@ -1,2 +1,2 @@
-# -ease
-An app that helps people carpool and buy groceries. 
+# @ease
+Trips and deliveries at your convenience.
