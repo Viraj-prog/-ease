@@ -11,6 +11,9 @@ export default function HomeScreen() {
       <Link href='/profile' style={{ fontSize: 18, color: '#007bff' }}>
         Go to Profile
       </Link>
+      <Link href='/settings' style={{ fontSize: 18, color: '#007bff' }}>
+        Go to Settings
+      </Link>
     </ScrollView>
   );
 }
