@@ -1,6 +1,6 @@
-import { Camera, Map, UserLocation } from '@maplibre/maplibre-react-native';
+import InteractiveMap from '@/components/map';
 import { useEffect } from 'react';
-import { PermissionsAndroid, Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { PermissionsAndroid, Platform, StyleSheet, View } from 'react-native';
 
 
 export default function ProfileScreen() {
@@ -34,20 +34,7 @@ export default function ProfileScreen() {
 
   return (
     <View style={styles.container}>
-      <StatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
-
-      <Map 
-        style={styles.map}
-        mapStyle="https://tiles.openfreemap.org/styles/positron" // Prop changed from styleURL to mapStyle
-      >
-        <Camera 
-          trackUserLocation="default" //If you are using emulator for testing, set location in emulator settings.
-          zoom={15} 
-          bearing={0}
-
-        />
-        <UserLocation accuracy={true} />
-      </Map>
+      <InteractiveMap />
     </View>
   );
 }
