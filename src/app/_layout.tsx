@@ -1,9 +1,31 @@
+import { AuthProvider, useAuth } from '@/lib/auth';
+import * as SplashScreen from 'expo-splash-screen';
 import { Stack } from 'expo-router';
+
+SplashScreen.preventAutoHideAsync();
+
+function RootNavigator() {
+  const { session, loading } = useAuth();
+
+  if (loading) return null;
+  SplashScreen.hideAsync();
+
+  return (
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Protected guard={!!session}>
+        <Stack.Screen name='(tabs)' />
+      </Stack.Protected>
+      <Stack.Protected guard={!session}>
+        <Stack.Screen name='login' />
+      </Stack.Protected>
+    </Stack>
+  );
+}
 
 export default function RootLayout() {
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name='(tabs)' />
-    </Stack>
+    <AuthProvider>
+      <RootNavigator />
+    </AuthProvider>
   );
 }

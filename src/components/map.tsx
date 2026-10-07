@@ -11,8 +11,9 @@ export default function InteractiveMap() {
   return (
     <Map style={styles.map} mapStyle={MAP_STYLE}>
       <Camera
-        initialViewState={{ center: DEFAULT_CENTER, zoom: 11 }}
+        initialViewState={{ center: DEFAULT_CENTER, zoom: 15 }}
         trackUserLocation='default'
+        zoom={15}
       />
       <UserLocation />
     </Map>

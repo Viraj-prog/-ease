@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import {
+  Alert,
   ScrollView,
   StyleSheet,
   Text,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import HomeHeader from '../../components/HomeHeader';
+import { supabase } from '../../lib/supabase';
 import { colors, globalStyles } from '../../styles/global';
 
 export default function HomeScreen() {
@@ -18,9 +21,19 @@ export default function HomeScreen() {
     console.log({ startingAddress, destinationAddress});
   };
 
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) Alert.alert('Log out failed', error.message);
+  };
+
   return (
     <ScrollView style={globalStyles.container}>
-      <Text style={globalStyles.title}>@Ease</Text>
+      <View style={globalStyles.header}>
+        <Text style={globalStyles.title}>@Ease</Text>
+        <TouchableOpacity onPress={handleLogout}>
+          <Text style={styles.logout}>Log out</Text>
+        </TouchableOpacity>
+      </View>
       <HomeHeader />
       <TextInput
         style={styles.input}
@@ -46,6 +59,11 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+  logout: {
+    color: colors.alert,
+    fontSize: 16,
+    fontWeight: '600',
+  },
   input: {
     backgroundColor: '#f0f0f0',
     color: colors.text,

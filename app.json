@@ -19,7 +19,10 @@
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.fortunen77.easecmpt496",
-      "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION"]
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ]
     },
     "web": {
       "output": "static",
@@ -35,8 +38,8 @@
           "imageWidth": 76
         }
       ],
-      "@maplibre/maplibre-react-native"
-
+      "@maplibre/maplibre-react-native",
+      "expo-secure-store"
     ],
     "experiments": {
       "typedRoutes": true,
